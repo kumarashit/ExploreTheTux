@@ -216,10 +216,10 @@ class FileManipulations:
         try:
             ri=input("Type 'cp <source file name> <destination file name>' Ex: cp foo.txt bar.txt"+ separator + colors.OKGREEN)
             search_str = ri
-            res = re.search('(cp)\s+(\w+)\s+(\w+)', search_str)
-            if res.group(1) != commands['copy']:
-                print(colors.ENDC+"Wrong command!")
-                raise()
+            #res = re.search('(cp)\s+(\W+)\s+(\W+)', search_str)
+            #if res.group(1) != commands['copy']:
+            #    print(colors.ENDC+"Wrong command!")
+            #    raise()
             os.system(ri)
             print(colors.ENDC)
         except:
