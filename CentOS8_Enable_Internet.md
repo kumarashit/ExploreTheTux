@@ -1,0 +1,26 @@
+# Installed CentOS 8 on a VirtulaBox and the host cannot connect to Internet?
+
+## Here is a quick fix you can do:
+### Get the NAT Adapter for the Host and open the corresponding "interface network script"
+    * $ ip link show
+      1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisck state UNKNOWN mode DEFAULT group default qlen 100
+          ....
+          ....
+      2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> .........
+          ....
+          ....
+      3: enp0s8: <BROADCAST,MULTICAST,UP,LOWER_UP> .........
+          ....
+          ....
+     
+     Here 'enp0s3' is the "NAT Adapter" for my VirtualBox with CentOS8
+### Open the corresposning network-script file, ex: /etc/sysconfig/network-scripts/ifcfg-enp0s3
+    And put following lines
+    
+    ```
+     DNS1=8.8.8.8
+     DNS2=8.8.4.4
+     #Change ONBOOT to yes, if it is set to no
+     ONBOOT=yes
+    ```
+  ## You are all set!!
